@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/jetbrainsmono/v21/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2")
+    format("woff2");
+}
+
+@theme inline {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-base: #09090b;
+  --color-surface: #0f0f12;
+  --color-elevated: #18181b;
+  --color-border: #1c1c22;
+  --color-border-light: #27272a;
+  --color-muted: #3f3f46;
+  --color-text-dim: #71717a;
+  --color-text: #a1a1aa;
+  --color-text-bright: #fafafa;
+  --color-silver-hi: #e2e8f0;
+  --color-silver-mid: #cbd5e1;
+  --color-silver-lo: #94a3b8;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--color-text-bright);
+}
