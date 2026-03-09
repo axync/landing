@@ -9,8 +9,8 @@ export function Contact() {
           Get in touch
         </h2>
         <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-text-dim">
-          Interested in integrating Axync, partnering on a chain deployment, or
-          just want to learn more? Reach out.
+          Whether you&apos;re a DeFi power user, an OTC desk, or a protocol looking
+          to integrate — we&apos;d love to hear from you.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -26,7 +26,7 @@ export function Contact() {
             Twitter / X
           </a>
           <a
-            href="mailto:hello@axync.xyz"
+            href="mailto:info@axync.xyz"
             className="flex items-center gap-2 rounded-xl border border-border px-6 py-3 font-heading text-sm font-medium text-text transition-colors hover:border-border-light hover:text-text-bright"
           >
             <svg
@@ -41,7 +41,7 @@ export function Contact() {
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M22 4L12 13 2 4" />
             </svg>
-            hello@axync.xyz
+            info@axync.xyz
           </a>
         </div>
 
@@ -50,7 +50,7 @@ export function Contact() {
             href="https://app.axync.xyz"
             className="inline-block rounded-xl bg-gradient-to-br from-silver-hi to-silver-lo px-10 py-4 font-heading text-base font-semibold text-base transition-opacity hover:opacity-90"
           >
-            Start Trading
+            Start Transferring
           </a>
         </div>
       </div>

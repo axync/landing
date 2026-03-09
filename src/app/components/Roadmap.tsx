@@ -17,7 +17,7 @@ const phases = [
     items: [
       "Mainnet deployment (Ethereum + Base)",
       "Additional EVM chains (Arbitrum, Optimism)",
-      "Enhanced institutional UI",
+      "Enhanced UI for retail and institutional users",
       "On-chain ZK verification contracts",
     ],
   },
@@ -28,7 +28,7 @@ const phases = [
     items: [
       "Non-EVM chain support (Solana, Cosmos)",
       "Compliance & regulatory tools",
-      "Advanced deal types & matching",
+      "Advanced transfer types & OTC matching",
       "WebSocket real-time updates",
     ],
   },

@@ -12,8 +12,9 @@ export function Team() {
         <p className="text-base leading-relaxed text-text">
           Axync is built by engineers with deep expertise in blockchain
           infrastructure, applied cryptography, and financial systems. We
-          believe that cross-chain settlement should be trustless, instant,
-          and private — backed by mathematical proof, not promises.
+          believe cross-chain transfers should be as cheap and safe as
+          on-chain ones — backed by mathematical proof, not the hope that a
+          bridge won&apos;t get exploited.
         </p>
         <div className="mt-6 flex items-center gap-4">
           <a

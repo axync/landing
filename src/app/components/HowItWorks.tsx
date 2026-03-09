@@ -3,21 +3,21 @@ const steps = [
     num: "01",
     title: "Deposit",
     description:
-      "Lock assets in a smart contract on any supported chain. The sequencer detects your deposit and credits your unified account.",
+      "Lock assets in a smart contract on any supported chain. The sequencer detects your deposit and credits your unified account. Your tokens never leave the chain they started on.",
     detail: "Assets stay on their native chain",
   },
   {
     num: "02",
-    title: "Trade",
+    title: "Transfer",
     description:
-      "Create or accept P2P deals. Cross-chain swaps execute atomically — ownership transfers instantly inside the unified state.",
+      "Move value cross-chain or settle a P2P deal. Ownership transfers atomically inside the unified state — no bridging, no wrapped tokens, nothing in transit.",
     detail: "Atomic settlement in seconds",
   },
   {
     num: "03",
     title: "Withdraw",
     description:
-      "Claim your assets on any chain where you hold a balance. A ZK proof verifies your withdrawal on-chain before releasing funds.",
+      "Claim your assets on any chain where you hold a balance. A ZK proof verifies your withdrawal on-chain before releasing funds. You only pay gas — no percentage fees.",
     detail: "ZK-verified on-chain",
   },
 ];
@@ -61,7 +61,7 @@ export function HowItWorks() {
           <path d="M0 6h20M16 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <span className="rounded-lg border border-border px-4 py-2 font-mono text-xs text-silver-lo">
-          Trade
+          Transfer
         </span>
         <svg width="24" height="12" viewBox="0 0 24 12" fill="none">
           <path d="M0 6h20M16 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

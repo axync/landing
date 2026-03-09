@@ -18,7 +18,8 @@ export function Chains() {
       </h2>
       <p className="mt-4 max-w-lg text-sm leading-relaxed text-text-dim">
         Axync maintains a unified state across all supported EVM chains.
-        Assets never move between chains — only ownership rights change.
+        Assets stay on their native chain — no wrapping, no bridging. Only
+        ownership rights change.
       </p>
 
       <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">

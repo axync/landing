@@ -10,19 +10,20 @@ export function Hero() {
         <AxyncMark size={60} className="mx-auto mb-8" />
 
         <h1 className="mx-auto max-w-3xl font-heading text-5xl leading-tight font-bold tracking-tight text-text-bright md:text-7xl md:leading-tight">
-          Cross-chain settlement.{" "}
+          Move value across chains.{" "}
           <span className="bg-gradient-to-r from-silver-hi via-silver-mid to-silver-lo bg-clip-text text-transparent">
-            Proven, not promised.
+            No bridge required.
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-dim">
-          Trustless P2P trading across any chain, verified by zero-knowledge
-          proofs. No bridges. No intermediaries.
+          Cross-chain transfers verified by zero-knowledge proofs. Your assets
+          never leave their native chain — no bridging, no wrapped tokens, no
+          attack surface.
         </p>
 
         <p className="mt-4 font-mono text-xs tracking-[4px] uppercase text-muted">
-          Proof, not promises.
+          Cheaper than bridges. Safer by design.
         </p>
 
         <div className="mt-10 flex items-center justify-center gap-4">

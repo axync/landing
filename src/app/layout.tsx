@@ -2,23 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Axync — Cross-Chain Settlement Protocol",
+  title: "Axync — Cross-Chain Transfers Without Bridges",
   description:
-    "Trustless P2P settlement across any chain, verified by zero-knowledge proofs. No bridges. No intermediaries. Proof, not promises.",
+    "Move value across chains with zero-knowledge proofs. No bridges, no wrapped tokens, no attack surface. Cheaper than bridges — you only pay gas.",
   keywords: [
     "cross-chain",
+    "cross-chain transfers",
     "settlement",
     "OTC",
     "zero-knowledge",
     "ZK proofs",
     "DeFi",
-    "P2P trading",
+    "no bridge",
     "blockchain",
   ],
   openGraph: {
-    title: "Axync — Cross-Chain Settlement Protocol",
+    title: "Axync — Cross-Chain Transfers Without Bridges",
     description:
-      "Trustless P2P settlement across any chain, verified by zero-knowledge proofs.",
+      "Move value across chains with zero-knowledge proofs. No bridges, no wrapped tokens, no attack surface.",
     url: "https://axync.xyz",
     siteName: "Axync",
     type: "website",
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axync — Cross-Chain Settlement Protocol",
+    title: "Axync — Cross-Chain Transfers Without Bridges",
     description:
-      "Trustless P2P settlement across any chain, verified by zero-knowledge proofs.",
+      "Move value across chains with zero-knowledge proofs. No bridges, no wrapped tokens, no attack surface.",
   },
   metadataBase: new URL("https://axync.xyz"),
 };
