@@ -1,3 +1,7 @@
+"use client";
+
+import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
+
 const phases = [
   {
     phase: "Phase 1",
@@ -68,21 +72,21 @@ function StatusBadge({ status }: { status: "done" | "active" | "upcoming" }) {
 export function Roadmap() {
   return (
     <section id="roadmap" className="mx-auto max-w-6xl px-6 py-32">
-      <p className="font-mono text-[10px] tracking-[4px] uppercase text-silver-lo">
-        04 — Roadmap
-      </p>
-      <h2 className="mt-2 font-heading text-3xl font-semibold text-text-bright md:text-4xl">
-        What we&apos;re building
-      </h2>
+      <FadeIn>
+        <p className="font-mono text-[10px] tracking-[4px] uppercase text-silver-lo">
+          04 — Roadmap
+        </p>
+        <h2 className="mt-2 font-heading text-3xl font-semibold text-text-bright md:text-4xl">
+          What we&apos;re building
+        </h2>
+      </FadeIn>
 
-      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <StaggerContainer className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {phases.map((p) => (
-          <div
+          <StaggerItem
             key={p.phase}
-            className={`rounded-2xl border p-6 ${
-              p.status === "active"
-                ? "border-silver-lo/30 bg-surface"
-                : "border-border bg-surface"
+            className={`glass card-glow rounded-2xl p-6 ${
+              p.status === "active" ? "!border-silver-lo/30" : ""
             }`}
           >
             <div className="flex items-center justify-between">
@@ -107,9 +111,9 @@ export function Roadmap() {
                 </li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

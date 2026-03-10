@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { AxyncMark } from "./AxyncMark";
 
 const navLinks = [
@@ -13,13 +14,27 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const navBg = useTransform(
+    scrollY,
+    [0, 80],
+    ["rgba(9,9,11,0)", "rgba(9,9,11,0.85)"]
+  );
+  const navBorder = useTransform(
+    scrollY,
+    [0, 80],
+    ["rgba(28,28,34,0)", "rgba(28,28,34,0.5)"]
+  );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-base/80 backdrop-blur-xl">
+    <motion.header
+      style={{ backgroundColor: navBg, borderColor: navBorder }}
+      className="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl"
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="group flex items-center gap-3">
           <AxyncMark size={20} />
-          <span className="font-heading text-lg font-bold text-text-bright">
+          <span className="font-heading text-lg font-bold text-text-bright transition-colors group-hover:text-silver-mid">
             Axync
           </span>
         </a>
@@ -95,6 +110,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }
