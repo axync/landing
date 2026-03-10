@@ -8,17 +8,27 @@ import { Team } from "./components/Team";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
+function SectionDivider() {
+  return <div className="section-glow mx-auto max-w-xl" />;
+}
+
 export default function Home() {
   return (
     <>
       <Header />
       <main>
         <Hero />
+        <SectionDivider />
         <Features />
+        <SectionDivider />
         <HowItWorks />
+        <SectionDivider />
         <Chains />
+        <SectionDivider />
         <Roadmap />
+        <SectionDivider />
         <Team />
+        <SectionDivider />
         <Contact />
       </main>
       <Footer />

@@ -64,3 +64,54 @@ body {
   background: rgba(148, 163, 184, 0.2);
   color: var(--color-text-bright);
 }
+
+/* ========== Premium Landing Styles ========== */
+
+.text-gradient-hero {
+  background: linear-gradient(135deg, #fafafa 0%, #e2e8f0 45%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(15, 15, 18, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(28, 28, 34, 0.6);
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -30px) scale(1.05); }
+  50% { transform: translate(-25px, 35px) scale(0.95); }
+  75% { transform: translate(30px, 15px) scale(1.03); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: orb-drift 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(28, 28, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 28, 34, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.section-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.2) 50%, transparent 100%);
+}
+
+.card-glow {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-glow:hover {
+  border-color: rgba(96, 165, 250, 0.2);
+  box-shadow: 0 0 40px -12px rgba(96, 165, 250, 0.08);
+}
