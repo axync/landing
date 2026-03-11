@@ -36,6 +36,14 @@ export function Footer() {
           >
             Roadmap
           </a>
+          <a
+            href="https://axync.gitbook.io/axync-docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-text-dim transition-colors hover:text-text-bright"
+          >
+            Docs
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">

@@ -9,6 +9,7 @@ const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "Chains", href: "#chains" },
   { label: "Roadmap", href: "#roadmap" },
+  { label: "Docs", href: "https://axync.gitbook.io/axync-docs", external: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -44,6 +45,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="font-body text-sm text-text-dim transition-colors hover:text-text-bright"
             >
               {link.label}
@@ -96,6 +98,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-sm text-text-dim transition-colors hover:text-text-bright"
               >
                 {link.label}

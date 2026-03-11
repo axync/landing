@@ -7,8 +7,11 @@ export const metadata: Metadata = {
   description:
     "Move value across chains with zero-knowledge proofs. No bridges, no wrapped tokens, no attack surface. Cheaper than bridges — you only pay gas.",
   keywords: [
+    "Axync",
+    "axync",
     "cross-chain",
     "cross-chain transfers",
+    "cross-chain settlement",
     "settlement",
     "OTC",
     "zero-knowledge",
@@ -43,6 +46,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Axync",
+              url: "https://axync.xyz",
+              logo: "https://axync.xyz/icon.svg",
+              sameAs: [
+                "https://x.com/axync_xyz",
+                "https://github.com/axync",
+              ],
+              description:
+                "Cross-chain settlement protocol verified by zero-knowledge proofs.",
+            }),
+          }}
+        />
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
