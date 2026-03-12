@@ -36,34 +36,26 @@ const phases = [
       "WebSocket real-time updates",
     ],
   },
-  {
-    phase: "Phase 4",
-    title: "Enterprise",
-    status: "upcoming" as const,
-    items: [
-      "White-label OTC solutions",
-      "API marketplace",
-      "Decentralized sequencer network",
-      "Mobile applications",
-    ],
-  },
 ];
 
 function StatusBadge({ status }: { status: "done" | "active" | "upcoming" }) {
   if (status === "done")
     return (
-      <span className="rounded-md bg-success/10 px-2 py-0.5 font-mono text-[9px] uppercase text-success">
+      <span className="rounded-full bg-success/15 px-3 py-1 text-[10px] font-semibold tracking-wider uppercase text-success">
         Complete
       </span>
     );
   if (status === "active")
     return (
-      <span className="rounded-md bg-silver-lo/10 px-2 py-0.5 font-mono text-[9px] uppercase text-silver-lo">
+      <span
+        className="rounded-full bg-lavender/15 px-3 py-1 text-[10px] font-semibold tracking-wider uppercase text-lavender"
+        style={{ animation: "pulse-badge 2s infinite" }}
+      >
         In Progress
       </span>
     );
   return (
-    <span className="rounded-md bg-muted/20 px-2 py-0.5 font-mono text-[9px] uppercase text-text-dim">
+    <span className="rounded-full bg-muted/10 px-3 py-1 text-[10px] font-semibold tracking-wider uppercase text-muted">
       Upcoming
     </span>
   );
@@ -71,42 +63,35 @@ function StatusBadge({ status }: { status: "done" | "active" | "upcoming" }) {
 
 export function Roadmap() {
   return (
-    <section id="roadmap" className="mx-auto max-w-6xl px-6 py-32">
+    <section id="roadmap" className="relative mx-auto max-w-[1200px] overflow-hidden px-6 py-28">
+      <div className="glow bg-ice/[0.10] absolute right-[5%] top-0 h-[350px] w-[350px]" />
+      <div className="glow bg-lavender/[0.08] absolute bottom-0 left-[5%] h-[300px] w-[300px]" />
+
       <FadeIn>
-        <p className="font-mono text-[10px] tracking-[4px] uppercase text-silver-lo">
+        <span className="text-xs tracking-[0.12em] uppercase text-lavender">
           04 — Roadmap
-        </p>
-        <h2 className="mt-2 font-heading text-3xl font-semibold text-text-bright md:text-4xl">
+        </span>
+        <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
           What we&apos;re building
         </h2>
       </FadeIn>
 
-      <StaggerContainer className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
         {phases.map((p) => (
-          <StaggerItem
-            key={p.phase}
-            className={`glass card-glow rounded-2xl p-6 ${
-              p.status === "active" ? "!border-silver-lo/30" : ""
-            }`}
-          >
+          <StaggerItem key={p.phase} className="glass p-7">
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs text-muted">{p.phase}</span>
+              <span className="text-xs uppercase tracking-wider text-text-dim">
+                {p.phase}
+              </span>
               <StatusBadge status={p.status} />
             </div>
-            <h3 className="mt-3 font-heading text-xl font-bold text-text-bright">
+            <h3 className="mt-2 font-heading text-lg font-semibold text-text-bright">
               {p.title}
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-2 text-sm text-text-dim">
               {p.items.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm text-text-dim"
-                >
-                  <span
-                    className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                      p.status === "done" ? "bg-success" : "bg-muted"
-                    }`}
-                  />
+                <li key={item} className="relative pl-5">
+                  <span className="absolute left-0 text-lavender">▸</span>
                   {item}
                 </li>
               ))}
