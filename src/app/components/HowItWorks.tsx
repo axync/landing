@@ -1,113 +1,110 @@
 "use client";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
+import { FadeIn } from "./Animate";
 
 const steps = [
   {
     num: "01",
+    icon: "⬇",
     title: "Deposit",
     description:
-      "Lock assets in a smart contract on any supported chain. The sequencer detects your deposit and credits your unified account. Your tokens never leave the chain they started on.",
+      "Lock assets in a smart contract on any supported chain. The sequencer detects your deposit and credits your unified account.",
     detail: "Assets stay on their native chain",
-    accent: "text-blue-400",
-    bg: "bg-blue-500/10",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M12 4v12M8 12l4 4 4-4" /><path d="M5 20h14" />
-      </svg>
-    ),
   },
   {
     num: "02",
+    icon: "⇄",
     title: "Transfer",
     description:
-      "Move value cross-chain or settle a P2P deal. Ownership transfers atomically inside the unified state — no bridging, no wrapped tokens, nothing in transit.",
+      "Move value cross-chain or settle a P2P deal. Ownership transfers atomically inside the unified state — no bridging, no wrapped tokens.",
     detail: "Atomic settlement in seconds",
-    accent: "text-violet-400",
-    bg: "bg-violet-500/10",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M5 12h14" /><path d="M15 8l4 4-4 4" /><path d="M9 8l-4 4 4 4" />
-      </svg>
-    ),
   },
   {
     num: "03",
+    icon: "⬆",
     title: "Withdraw",
     description:
-      "Claim your assets on any chain where you hold a balance. A ZK proof verifies your withdrawal on-chain before releasing funds. You only pay gas — no percentage fees.",
+      "Claim assets on any chain where you hold a balance. A ZK proof verifies your withdrawal on-chain before releasing funds.",
     detail: "ZK-verified on-chain",
-    accent: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M12 20V8M8 12l4-4 4 4" /><path d="M5 4h14" />
-      </svg>
-    ),
   },
 ];
 
+function FlowLine() {
+  return (
+    <div className="relative hidden h-0.5 w-20 shrink-0 items-center justify-center self-center md:flex">
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-lavender/30 to-ice/30" />
+      <div
+        className="absolute h-1.5 w-1.5 rounded-full bg-ice"
+        style={{ animation: "flow-dot 2.5s infinite linear" }}
+      />
+    </div>
+  );
+}
+
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="mx-auto max-w-6xl px-6 py-32">
+    <section id="how-it-works" className="relative mx-auto max-w-[1200px] overflow-hidden px-6 py-28">
+      <div className="glow bg-ice/[0.10] absolute -right-0 -top-[5%] h-[350px] w-[350px]" />
+      <div className="glow bg-lavender/[0.08] absolute bottom-0 left-[5%] h-[300px] w-[300px]" />
+
       <FadeIn>
-        <p className="font-mono text-[10px] tracking-[4px] uppercase text-silver-lo">
-          02 — How it works
-        </p>
-        <h2 className="mt-2 font-heading text-3xl font-semibold text-text-bright md:text-4xl">
+        <span className="text-xs tracking-[0.12em] uppercase text-lavender">
+          02 — How It Works
+        </span>
+        <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
           Three steps. Any chain.
         </h2>
       </FadeIn>
 
-      <StaggerContainer className="mt-16 grid gap-6 md:grid-cols-3">
-        {steps.map((step, i) => (
-          <StaggerItem
-            key={step.num}
-            className="glass card-glow group relative rounded-2xl p-8"
-          >
-            <span className="absolute top-6 right-6 font-mono text-[11px] text-text-dim/40">
-              {step.num}
-            </span>
-            <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${step.bg} ${step.accent} mb-5`}>
-              {step.icon}
-            </div>
-            <h3 className="font-heading text-2xl font-bold text-text-bright">
-              {step.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-text-dim">
-              {step.description}
-            </p>
-            <div className="mt-6 inline-block rounded-md bg-base/80 px-3 py-1 font-mono text-[10px] tracking-wide uppercase text-silver-lo">
-              {step.detail}
-            </div>
-
-            {i < 2 && (
-              <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 md:block">
-                <svg width="6" height="10" viewBox="0 0 6 10" className="text-text-dim/30">
-                  <path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-                </svg>
+      <FadeIn delay={0.15}>
+        {/* Desktop: horizontal */}
+        <div className="mt-16 hidden items-start md:flex">
+          {steps.map((step, i) => (
+            <div key={step.num} className="contents">
+              <div className="flex flex-1 flex-col items-center text-center px-5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-lavender to-ice font-heading text-sm font-bold text-base">
+                  {step.num}
+                </div>
+                <div className="mt-4 text-[28px]">{step.icon}</div>
+                <h3 className="mt-3 font-heading text-base font-semibold text-text-bright">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-text-dim">
+                  {step.description}
+                </p>
+                <span className="mt-3 text-[10px] font-semibold tracking-[0.1em] uppercase text-lavender">
+                  {step.detail}
+                </span>
               </div>
-            )}
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
+              {i < 2 && <FlowLine />}
+            </div>
+          ))}
+        </div>
 
-      <FadeIn delay={0.3} className="mt-12 flex items-center justify-center gap-4 text-muted">
-        <span className="rounded-lg border border-border px-4 py-2 font-mono text-xs text-silver-lo">
-          Deposit
-        </span>
-        <svg width="24" height="12" viewBox="0 0 24 12" fill="none">
-          <path d="M0 6h20M16 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="rounded-lg border border-border px-4 py-2 font-mono text-xs text-silver-lo">
-          Transfer
-        </span>
-        <svg width="24" height="12" viewBox="0 0 24 12" fill="none">
-          <path d="M0 6h20M16 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="rounded-lg border border-border px-4 py-2 font-mono text-xs text-silver-lo">
-          Withdraw
-        </span>
+        {/* Mobile: vertical */}
+        <div className="mt-12 flex flex-col gap-8 md:hidden">
+          {steps.map((step) => (
+            <div key={step.num} className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-lavender to-ice font-heading text-sm font-bold text-base">
+                  {step.num}
+                </div>
+                <div className="mt-2 h-full w-px bg-border" />
+              </div>
+              <div className="pb-2">
+                <h3 className="font-heading text-base font-semibold text-text-bright">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-text-dim">
+                  {step.description}
+                </p>
+                <span className="mt-2 inline-block text-[10px] font-semibold tracking-[0.1em] uppercase text-lavender">
+                  {step.detail}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </FadeIn>
     </section>
   );

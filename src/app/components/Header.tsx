@@ -55,7 +55,7 @@ export function Header() {
 
         <a
           href="https://app.axync.xyz"
-          className="hidden rounded-lg bg-gradient-to-br from-silver-hi to-silver-lo px-5 py-2 font-heading text-sm font-semibold text-base transition-opacity hover:opacity-90 md:inline-block"
+          className="hidden rounded-lg bg-gradient-to-r from-lavender to-ice px-5 py-2 font-heading text-[13px] font-semibold text-base transition-opacity hover:opacity-90 md:inline-block"
         >
           Launch App
         </a>
@@ -106,7 +106,7 @@ export function Header() {
             ))}
             <a
               href="https://app.axync.xyz"
-              className="mt-2 rounded-lg bg-gradient-to-br from-silver-hi to-silver-lo px-5 py-2 text-center font-heading text-sm font-semibold text-base"
+              className="mt-2 rounded-lg bg-gradient-to-r from-lavender to-ice px-5 py-2 text-center font-heading text-sm font-semibold text-base"
             >
               Launch App
             </a>
