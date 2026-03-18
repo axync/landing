@@ -5,27 +5,27 @@ import { FadeIn } from "./Animate";
 const steps = [
   {
     num: "01",
-    icon: "⬇",
-    title: "Deposit",
+    icon: "\uD83D\uDCCB",
+    title: "List Your Position",
     description:
-      "Lock assets in a smart contract on any supported chain. The sequencer detects your deposit and credits your unified account.",
-    detail: "Assets stay on their native chain",
+      "Connect wallet. Axync auto-detects your Sablier or Hedgey vesting NFTs. Choose one, set your price, and list it.",
+    detail: "Auto-detect vesting NFTs",
   },
   {
     num: "02",
-    icon: "⇄",
-    title: "Transfer",
+    icon: "\uD83D\uDD0D",
+    title: "Browse & Buy",
     description:
-      "Move value cross-chain or settle a P2P deal. Ownership transfers atomically inside the unified state — no bridging, no wrapped tokens.",
-    detail: "Atomic settlement in seconds",
+      "Buyers browse listings with full transparency: token, unlock schedule, discount rate. Find a deal and commit USDC/USDT to the escrow.",
+    detail: "Full schedule visibility",
   },
   {
     num: "03",
-    icon: "⬆",
-    title: "Withdraw",
+    icon: "\u21C4",
+    title: "Atomic Swap",
     description:
-      "Claim assets on any chain where you hold a balance. A ZK proof verifies your withdrawal on-chain before releasing funds.",
-    detail: "ZK-verified on-chain",
+      "Escrow contract executes: vesting NFT goes to buyer, payment goes to seller. One transaction. Buyer now claims tokens as they unlock.",
+    detail: "Trustless, instant settlement",
   },
 ];
 
@@ -49,10 +49,10 @@ export function HowItWorks() {
 
       <FadeIn>
         <span className="text-xs tracking-[0.12em] uppercase text-lavender">
-          02 — How It Works
+          02 &mdash; How It Works
         </span>
         <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
-          Three steps. Any chain.
+          Three steps. Fully on-chain.
         </h2>
       </FadeIn>
 

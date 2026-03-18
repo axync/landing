@@ -89,7 +89,6 @@ function NodeCanvas() {
       }
     }
 
-    // Lines
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const a = nodes[i], b = nodes[j];
@@ -106,21 +105,17 @@ function NodeCanvas() {
       }
     }
 
-    // Nodes
     for (const n of nodes) {
-      // Glow
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.drawR * 2.5, 0, Math.PI * 2);
       ctx.fillStyle = hexToRgba(n.color, n.alpha * 0.15);
       ctx.fill();
-      // Core
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.drawR, 0, Math.PI * 2);
       ctx.fillStyle = hexToRgba(n.color, n.alpha);
       ctx.fill();
     }
 
-    // Cursor glow on canvas
     if (mx > 0 && mx < w && my > 0 && my < h) {
       const mg = ctx.createRadialGradient(mx, my, 0, mx, my, 80);
       mg.addColorStop(0, "rgba(204,204,255,0.03)");
@@ -173,10 +168,8 @@ export function Hero() {
       <div className="glow bg-ice/[0.08] absolute top-[35%] left-[8%] h-[250px] w-[250px]" />
       <div className="glow bg-lavender/[0.07] absolute top-[15%] right-[12%] h-[200px] w-[200px]" />
 
-      {/* Canvas nodes */}
       <NodeCanvas />
 
-      {/* Content */}
       <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -186,7 +179,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-lavender/25 bg-lavender/[0.05] px-5 py-1.5 text-xs text-text-dim">
             <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-            Live on Sepolia Testnet
+            Ethereum Mainnet &mdash; Coming Soon
           </span>
         </motion.div>
 
@@ -196,19 +189,20 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease }}
           className="font-heading text-[clamp(42px,6vw,74px)] font-bold leading-[1.05] tracking-tight"
         >
-          Move value
+          Trade locked tokens.
           <br />
-          <span className="text-gradient">across chains.</span>
+          <span className="text-gradient">No permission needed.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7, ease }}
-          className="mx-auto mt-5 max-w-[500px] text-[17px] leading-relaxed text-text-dim"
+          className="mx-auto mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-dim"
         >
-          Cross-chain transfers verified by zero-knowledge proofs.
-          No bridges. No wrapped tokens. Just math.
+          The first permissionless marketplace for vesting positions.
+          Sell your locked tokens today, buy them at a discount.
+          Trustless escrow, instant settlement.
         </motion.p>
 
         <motion.div
@@ -218,7 +212,7 @@ export function Hero() {
           className="mt-9 flex items-center justify-center gap-3.5"
         >
           <a href="https://app.axync.xyz" className="btn-primary">
-            Launch App
+            Explore Listings
           </a>
           <a
             href="https://github.com/axync"
@@ -236,11 +230,10 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.9, ease }}
           className="mt-7 text-gradient text-[11px] tracking-[0.18em] uppercase opacity-45"
         >
-          Cheaper than bridges. Safer by design.
+          PERMISSIONLESS. TRUSTLESS. NO ISSUER APPROVAL.
         </motion.p>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

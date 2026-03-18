@@ -5,35 +5,35 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
 const phases = [
   {
     phase: "Phase 1",
-    title: "Foundation",
-    status: "done" as const,
+    title: "MVP Launch",
+    status: "active" as const,
     items: [
-      "Core ZK proof system (STARK + Groth16 SNARK)",
-      "Ethereum & Base Sepolia testnets",
-      "P2P deal settlement engine",
-      "Rust sequencer with state snapshots",
+      "Escrow contract for Sablier & Hedgey NFTs",
+      "Vesting position indexer & API",
+      "Marketplace UI: list, browse, buy",
+      "Ethereum mainnet deployment",
     ],
   },
   {
     phase: "Phase 2",
-    title: "Launch",
-    status: "active" as const,
+    title: "Growth",
+    status: "upcoming" as const,
     items: [
-      "Mainnet deployment (Ethereum + Base)",
-      "Additional EVM chains (Arbitrum, Optimism)",
-      "Enhanced UI for retail and institutional users",
-      "On-chain ZK verification contracts",
+      "Bid system for buyers",
+      "Axync Index: public discount dashboard",
+      "Non-transferable vesting support",
+      "Base & Arbitrum deployment",
     ],
   },
   {
     phase: "Phase 3",
-    title: "Expansion",
+    title: "Scale",
     status: "upcoming" as const,
     items: [
-      "Non-EVM chain support (Solana, Cosmos)",
-      "Compliance & regulatory tools",
-      "Advanced transfer types & OTC matching",
-      "WebSocket real-time updates",
+      "ZK privacy for position sizes",
+      "Cross-chain (Solana locked tokens)",
+      "API for OTC desks",
+      "Custom vesting contract support",
     ],
   },
 ];
@@ -64,12 +64,12 @@ function StatusBadge({ status }: { status: "done" | "active" | "upcoming" }) {
 export function Roadmap() {
   return (
     <section id="roadmap" className="relative mx-auto max-w-[1200px] overflow-hidden px-6 py-28">
-      <div className="glow bg-ice/[0.10] absolute right-[5%] top-0 h-[350px] w-[350px]" />
-      <div className="glow bg-lavender/[0.08] absolute bottom-0 left-[5%] h-[300px] w-[300px]" />
+      <div className="glow bg-lavender/[0.10] absolute right-[5%] top-0 h-[350px] w-[350px]" />
+      <div className="glow bg-ice/[0.08] absolute bottom-0 left-[5%] h-[300px] w-[300px]" />
 
       <FadeIn>
         <span className="text-xs tracking-[0.12em] uppercase text-lavender">
-          04 — Roadmap
+          07 &mdash; Roadmap
         </span>
         <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
           What we&apos;re building
@@ -91,7 +91,7 @@ export function Roadmap() {
             <ul className="mt-4 space-y-2 text-sm text-text-dim">
               {p.items.map((item) => (
                 <li key={item} className="relative pl-5">
-                  <span className="absolute left-0 text-lavender">▸</span>
+                  <span className="absolute left-0 text-lavender">{"\u25B8"}</span>
                   {item}
                 </li>
               ))}

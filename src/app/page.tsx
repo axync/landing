@@ -1,10 +1,12 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { Features } from "./components/Features";
+import { Problem } from "./components/Problem";
 import { HowItWorks } from "./components/HowItWorks";
-import { Chains } from "./components/Chains";
+import { DealPreview } from "./components/DealPreview";
+import { Features } from "./components/Features";
+import { WhyAxync } from "./components/WhyAxync";
+import { Supported } from "./components/Supported";
 import { Roadmap } from "./components/Roadmap";
-import { Team } from "./components/Team";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
@@ -19,15 +21,19 @@ export default function Home() {
       <main>
         <Hero />
         <SectionDivider />
-        <Features />
+        <Problem />
         <SectionDivider />
         <HowItWorks />
         <SectionDivider />
-        <Chains />
+        <DealPreview />
+        <SectionDivider />
+        <Features />
+        <SectionDivider />
+        <WhyAxync />
+        <SectionDivider />
+        <Supported />
         <SectionDivider />
         <Roadmap />
-        <SectionDivider />
-        <Team />
         <SectionDivider />
         <Contact />
       </main>

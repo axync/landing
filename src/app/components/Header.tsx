@@ -5,12 +5,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { AxyncMark } from "./AxyncMark";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Problem", href: "#problem" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Chains", href: "#chains" },
-  { label: "Roadmap", href: "#roadmap" },
+  { label: "Features", href: "#features" },
+  { label: "Why Axync", href: "#compare" },
   { label: "Docs", href: "https://axync.gitbook.io/axync-docs", external: true },
-  { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
