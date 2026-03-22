@@ -14,7 +14,7 @@ export function Contact() {
             Trade tokens. <span className="text-gradient">Skip bridges.</span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-text-dim">
-            List ERC-20 tokens or vesting NFTs on any chain. Get paid on any chain. ZK-powered, trustless, and permissionless.
+            List tokens or vesting positions on any chain. Get paid on any chain. ZK-powered, trustless, and permissionless.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">

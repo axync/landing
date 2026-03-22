@@ -15,8 +15,8 @@ const features = [
   },
   {
     icon: "\uD83D\uDCE6",
-    title: "ERC-20 & ERC-721",
-    desc: "Trade any ERC-20 token or vesting NFT (Sablier, Hedgey). Same protocol, same escrow, same settlement flow.",
+    title: "Tokens & NFTs",
+    desc: "Trade any token or vesting position (Sablier, Hedgey). Same protocol, same escrow, same settlement flow.",
   },
   {
     icon: "\u26A1",

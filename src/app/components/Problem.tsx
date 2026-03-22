@@ -7,7 +7,7 @@ const problems = [
     icon: "\u2715",
     color: "error" as const,
     title: "Trust-based OTC in Telegram",
-    desc: "Locked tokens and ERC-20s traded daily through DMs. No escrow, no verification. Someone always gets scammed.",
+    desc: "Locked tokens traded daily through Telegram DMs. No escrow, no verification. Someone always gets scammed.",
   },
   {
     icon: "\u2715",
@@ -69,7 +69,7 @@ export function Problem() {
                 <div>
                   <h3 className="text-base font-semibold text-text-bright">Axync: cross-chain by design</h3>
                   <p className="mt-1 text-sm leading-relaxed text-text-dim">
-                    List ERC-20 tokens or vesting NFTs on any chain. Buyers pay on any chain. ZK sequencer settles atomically. No bridges, no wrapping, no trust.
+                    List tokens or vesting positions on any chain. Buyers pay on any chain. ZK sequencer settles atomically. No bridges, no wrapping, no trust.
                   </p>
                 </div>
               </div>

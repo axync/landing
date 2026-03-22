@@ -81,7 +81,7 @@ export default async function Image() {
             marginTop: 40,
           }}
         >
-          {["ERC-20 & ERC-721", "Cross-Chain", "ZK-Proven"].map(
+          {["Tokens & NFTs", "Cross-Chain", "ZK-Proven"].map(
             (tag) => (
               <div
                 key={tag}

@@ -17,7 +17,7 @@ const stats = [
   },
   {
     value: "$0",
-    desc: "Minimum deal size. From $100 ERC-20 swap to $500K vesting position \u2014 same protocol, same access.",
+    desc: "Minimum deal size. From $100 token swap to $500K vesting position \u2014 same protocol, same access.",
   },
 ];
 

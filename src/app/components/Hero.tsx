@@ -200,7 +200,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.7, ease }}
           className="mx-auto mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-dim"
         >
-          Cross-chain marketplace for vesting positions and ERC-20 tokens.
+          Cross-chain marketplace for tokens and vesting positions.
           List on one chain, get paid on another.
           ZK-powered settlement. No bridges, no intermediaries.
         </motion.p>
@@ -230,7 +230,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.9, ease }}
           className="mt-7 text-gradient text-[11px] tracking-[0.18em] uppercase opacity-45"
         >
-          ERC-20. ERC-721. CROSS-CHAIN. ZK-PROVEN.
+          TOKENS. NFTS. CROSS-CHAIN. ZK-PROVEN.
         </motion.p>
       </div>
 

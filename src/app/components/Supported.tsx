@@ -6,7 +6,7 @@ const platforms = [
   {
     icon: "\uD83D\uDD37",
     name: "Ethereum",
-    desc: "Mainnet and Sepolia testnet. ERC-20 tokens, Sablier and Hedgey vesting NFTs.",
+    desc: "Mainnet and Sepolia testnet. Tokens, Sablier and Hedgey vesting positions.",
     status: "LIVE",
     live: true,
   },

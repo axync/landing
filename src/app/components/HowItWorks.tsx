@@ -8,8 +8,8 @@ const steps = [
     icon: "\uD83D\uDCCB",
     title: "List on Any Chain",
     description:
-      "Connect wallet. List your ERC-20 tokens or vesting NFTs into the Axync escrow. Set your price and choose which chain you want to get paid on.",
-    detail: "ERC-20 & ERC-721 support",
+      "Connect wallet. List your tokens or vesting positions into the Axync escrow. Set your price and choose which chain you want to get paid on.",
+    detail: "Tokens & NFTs supported",
   },
   {
     num: "02",

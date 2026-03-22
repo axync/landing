@@ -5,12 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Axync — Cross-Chain Token Marketplace",
   description:
-    "Trade any token across any chain. Cross-chain marketplace for ERC-20 tokens and vesting positions. ZK-powered settlement, trustless escrow, no bridges.",
+    "Trade any token across any chain. Cross-chain marketplace for tokens tokens and vesting positions. ZK-powered settlement, trustless escrow, no bridges.",
   keywords: [
     "Axync",
     "cross-chain",
     "token marketplace",
-    "ERC-20",
+    "tokens",
     "vesting NFT",
     "ZK proofs",
     "Sablier",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Axync — Cross-Chain Token Marketplace",
     description:
-      "Trade any token across any chain. ERC-20 and vesting NFT marketplace with ZK-powered cross-chain settlement.",
+      "Trade any token across any chain. tokens and vesting marketplace with ZK-powered cross-chain settlement.",
     url: "https://axync.xyz",
     siteName: "Axync",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Axync — Cross-Chain Token Marketplace",
     description:
-      "Trade any token across any chain. ERC-20 and vesting NFT marketplace with ZK-powered cross-chain settlement.",
+      "Trade any token across any chain. tokens and vesting marketplace with ZK-powered cross-chain settlement.",
   },
   metadataBase: new URL("https://axync.xyz"),
   icons: {
@@ -68,7 +68,7 @@ export default function RootLayout({
                 "https://github.com/axync",
               ],
               description:
-                "Cross-chain marketplace for ERC-20 tokens and vesting positions with ZK-powered settlement.",
+                "Cross-chain marketplace for tokens tokens and vesting positions with ZK-powered settlement.",
             }),
           }}
         />

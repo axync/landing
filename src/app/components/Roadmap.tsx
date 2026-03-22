@@ -8,7 +8,7 @@ const phases = [
     title: "Cross-Chain MVP",
     status: "active" as const,
     items: [
-      "ERC-20 & ERC-721 escrow contracts",
+      "Token & NFT escrow contracts",
       "ZK sequencer with cross-chain settlement",
       "Ethereum + Base Sepolia testnet",
       "Relayer for on-chain proof submission",
