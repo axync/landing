@@ -4,34 +4,34 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
 
 const features = [
   {
-    icon: "\uD83D\uDD13",
-    title: "Permissionless",
-    desc: "No issuer approval needed. Works with any Sablier or Hedgey vesting NFT from day one. New airdrop? Tradeable immediately.",
+    icon: "\uD83C\uDF10",
+    title: "Cross-Chain",
+    desc: "List assets on Ethereum, get paid on Base. Or vice versa. ZK sequencer handles settlement across chains without bridges.",
+  },
+  {
+    icon: "\uD83D\uDD10",
+    title: "ZK-Proven",
+    desc: "Every trade is batched into a block and verified with a zero-knowledge proof. On-chain merkle roots guarantee correctness.",
+  },
+  {
+    icon: "\uD83D\uDCE6",
+    title: "ERC-20 & ERC-721",
+    desc: "Trade any ERC-20 token or vesting NFT (Sablier, Hedgey). Same protocol, same escrow, same settlement flow.",
   },
   {
     icon: "\u26A1",
     title: "Atomic Settlement",
-    desc: "NFT-for-stablecoins swap in one transaction. No escrow periods, no counterparty risk. Smart contract handles everything.",
+    desc: "Sequencer processes trades in 5-second blocks. Buyer claims with a merkle proof. No escrow periods, no counterparty risk.",
   },
   {
-    icon: "\uD83D\uDCCA",
-    title: "Full Transparency",
-    desc: "Every listing shows complete vesting schedule, claimed amount, time to unlock, and discount rate. All verified from on-chain data.",
-  },
-  {
-    icon: "\uD83D\uDCB0",
-    title: "Any Size",
-    desc: "No minimums. Whether you're selling a $5K airdrop or a $500K VC allocation \u2014 same protocol, same low fees.",
-  },
-  {
-    icon: "\uD83D\uDD0E",
-    title: "Auto-Detection",
-    desc: "Connect your wallet and Axync automatically finds your vesting positions. Select, price, and list in under 30 seconds.",
+    icon: "\uD83D\uDD13",
+    title: "Permissionless",
+    desc: "No issuer approval, no KYC, no minimums. List any token from day one. New airdrop? Tradeable immediately.",
   },
   {
     icon: "\uD83D\uDEE1\uFE0F",
     title: "Trustless Escrow",
-    desc: "Open-source smart contract holds both sides. No custody, no intermediaries. Audited and verifiable by anyone.",
+    desc: "Open-source smart contracts hold both sides. No custody, no intermediaries. Verifiable by anyone on-chain.",
   },
 ];
 
@@ -46,7 +46,7 @@ export function Features() {
           04 &mdash; Features
         </span>
         <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
-          Built for locked token markets.
+          Built on <span className="text-gradient">ZK proofs.</span>
         </h2>
       </FadeIn>
 

@@ -6,26 +6,26 @@ const steps = [
   {
     num: "01",
     icon: "\uD83D\uDCCB",
-    title: "List Your Position",
+    title: "List on Any Chain",
     description:
-      "Connect wallet. Axync auto-detects your Sablier or Hedgey vesting NFTs. Choose one, set your price, and list it.",
-    detail: "Auto-detect vesting NFTs",
+      "Connect wallet. List your ERC-20 tokens or vesting NFTs into the Axync escrow. Set your price and choose which chain you want to get paid on.",
+    detail: "ERC-20 & ERC-721 support",
   },
   {
     num: "02",
     icon: "\uD83D\uDD0D",
-    title: "Browse & Buy",
+    title: "Buy from Any Chain",
     description:
-      "Buyers browse listings with full transparency: token, unlock schedule, discount rate. Find a deal and commit USDC/USDT to the escrow.",
-    detail: "Full schedule visibility",
+      "Buyers browse listings cross-chain. See the token, discount, and vesting schedule. Deposit payment on their preferred chain.",
+    detail: "Cross-chain deposits",
   },
   {
     num: "03",
     icon: "\u21C4",
-    title: "Atomic Swap",
+    title: "ZK Settlement",
     description:
-      "Escrow contract executes: vesting NFT goes to buyer, payment goes to seller. One transaction. Buyer now claims tokens as they unlock.",
-    detail: "Trustless, instant settlement",
+      "Sequencer batches the trade into a block, generates a ZK proof, and submits it on-chain. Buyer claims tokens with a merkle proof. Trustless and atomic.",
+    detail: "ZK-proven, no bridges",
   },
 ];
 
@@ -52,7 +52,7 @@ export function HowItWorks() {
           02 &mdash; How It Works
         </span>
         <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
-          Three steps. Fully on-chain.
+          Three steps. <span className="text-gradient">Zero trust required.</span>
         </h2>
       </FadeIn>
 

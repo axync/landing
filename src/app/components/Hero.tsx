@@ -179,7 +179,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-lavender/25 bg-lavender/[0.05] px-5 py-1.5 text-xs text-text-dim">
             <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-            Ethereum Mainnet &mdash; Coming Soon
+            Live on Ethereum &amp; Base Sepolia
           </span>
         </motion.div>
 
@@ -189,9 +189,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease }}
           className="font-heading text-[clamp(42px,6vw,74px)] font-bold leading-[1.05] tracking-tight"
         >
-          Trade locked tokens.
+          Trade any token.
           <br />
-          <span className="text-gradient">No permission needed.</span>
+          <span className="text-gradient">Across any chain.</span>
         </motion.h1>
 
         <motion.p
@@ -200,9 +200,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.7, ease }}
           className="mx-auto mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-dim"
         >
-          The first permissionless marketplace for vesting positions.
-          Sell your locked tokens today, buy them at a discount.
-          Trustless escrow, instant settlement.
+          Cross-chain marketplace for vesting positions and ERC-20 tokens.
+          List on one chain, get paid on another.
+          ZK-powered settlement. No bridges, no intermediaries.
         </motion.p>
 
         <motion.div
@@ -230,7 +230,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.9, ease }}
           className="mt-7 text-gradient text-[11px] tracking-[0.18em] uppercase opacity-45"
         >
-          PERMISSIONLESS. TRUSTLESS. NO ISSUER APPROVAL.
+          ERC-20. ERC-721. CROSS-CHAIN. ZK-PROVEN.
         </motion.p>
       </div>
 

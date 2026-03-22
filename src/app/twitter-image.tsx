@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
-export const alt = "Axync — Cross-Chain Transfers Without Bridges";
+export const alt = "Axync — Cross-Chain Token Marketplace";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,10 +40,10 @@ export default async function Image() {
           fill="none"
           style={{ marginBottom: 32 }}
         >
-          <line x1="60" y1="10" x2="20" y2="140" stroke="#CBD5E1" strokeWidth="6" strokeLinecap="round" />
-          <line x1="60" y1="10" x2="100" y2="140" stroke="#CBD5E1" strokeWidth="6" strokeLinecap="round" />
-          <line x1="37" y1="70" x2="83" y2="100" stroke="#CBD5E1" strokeWidth="5" strokeLinecap="round" />
-          <line x1="83" y1="70" x2="37" y2="100" stroke="#CBD5E1" strokeWidth="5" strokeLinecap="round" />
+          <line x1="60" y1="10" x2="10" y2="140" stroke="#CBD5E1" strokeWidth="6" strokeLinecap="round" />
+          <line x1="60" y1="10" x2="110" y2="140" stroke="#CBD5E1" strokeWidth="6" strokeLinecap="round" />
+          <line x1="36.9" y1="70" x2="96.5" y2="105" stroke="#CBD5E1" strokeWidth="5" strokeLinecap="round" />
+          <line x1="83.1" y1="70" x2="23.5" y2="105" stroke="#CBD5E1" strokeWidth="5" strokeLinecap="round" />
         </svg>
 
         <div
@@ -66,7 +66,7 @@ export default async function Image() {
             display: "flex",
           }}
         >
-          Cross-Chain Transfers Without Bridges
+          Trade any token. Across any chain.
         </div>
 
         <div
@@ -76,7 +76,7 @@ export default async function Image() {
             marginTop: 40,
           }}
         >
-          {["Zero-Knowledge Proofs", "No Wrapped Tokens", "Gas Only"].map(
+          {["ERC-20 & ERC-721", "Cross-Chain", "ZK-Proven"].map(
             (tag) => (
               <div
                 key={tag}

@@ -11,10 +11,10 @@ export function Contact() {
       <FadeIn>
         <div className="glass mx-auto max-w-[700px] border-lavender/15 bg-gradient-to-br from-lavender/[0.06] to-ice/[0.06] p-12 text-center sm:p-16">
           <h2 className="font-heading text-[32px] font-bold text-text-bright">
-            Your vesting, <span className="text-gradient">your choice.</span>
+            Trade tokens. <span className="text-gradient">Skip bridges.</span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-text-dim">
-            Stop waiting for unlock schedules. Sell your locked tokens today or buy them at a discount. No permission needed.
+            List ERC-20 tokens or vesting NFTs on any chain. Get paid on any chain. ZK-powered, trustless, and permissionless.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">

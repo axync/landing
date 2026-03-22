@@ -4,20 +4,20 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
 
 const stats = [
   {
+    value: "2",
+    desc: "Chains live. Ethereum and Base with cross-chain settlement. List on one, get paid on another.",
+  },
+  {
+    value: "5s",
+    desc: "Block time. Sequencer batches trades every 5 seconds. ZK proof submitted on-chain by relayer.",
+  },
+  {
     value: "0",
-    desc: "Approvals needed. List any vesting NFT instantly \u2014 no project permission, no KYC, no waitlist.",
-  },
-  {
-    value: "1",
-    desc: "Transaction to settle. Atomic NFT-for-stablecoin swap via smart contract escrow. No intermediaries.",
-  },
-  {
-    value: "30s",
-    desc: "To list a position. Connect wallet, auto-detect vesting NFTs, set price, done.",
+    desc: "Bridges needed. No wrapping, no bridging, no intermediaries. ZK proofs handle cross-chain verification.",
   },
   {
     value: "$0",
-    desc: "Minimum deal size. From $500 airdrop to $500K VC allocation \u2014 same protocol, same access.",
+    desc: "Minimum deal size. From $100 ERC-20 swap to $500K vesting position \u2014 same protocol, same access.",
   },
 ];
 

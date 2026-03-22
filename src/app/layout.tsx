@@ -3,27 +3,28 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Axync — Permissionless Locked Token Marketplace",
+  title: "Axync — Cross-Chain Token Marketplace",
   description:
-    "Trade locked tokens without permission. The first permissionless marketplace for vesting positions. Sell your locked tokens today, buy them at a discount. Trustless escrow, instant settlement.",
+    "Trade any token across any chain. Cross-chain marketplace for ERC-20 tokens and vesting positions. ZK-powered settlement, trustless escrow, no bridges.",
   keywords: [
     "Axync",
-    "axync",
-    "locked tokens",
-    "vesting marketplace",
-    "vesting OTC",
-    "token vesting",
+    "cross-chain",
+    "token marketplace",
+    "ERC-20",
+    "vesting NFT",
+    "ZK proofs",
     "Sablier",
     "Hedgey",
-    "locked token trading",
     "DeFi",
     "permissionless",
     "trustless escrow",
+    "Ethereum",
+    "Base",
   ],
   openGraph: {
-    title: "Axync — Permissionless Locked Token Marketplace",
+    title: "Axync — Cross-Chain Token Marketplace",
     description:
-      "Trade locked tokens without permission. Sell your vesting positions today, buy them at a discount. Trustless escrow, instant settlement.",
+      "Trade any token across any chain. ERC-20 and vesting NFT marketplace with ZK-powered cross-chain settlement.",
     url: "https://axync.xyz",
     siteName: "Axync",
     type: "website",
@@ -31,11 +32,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axync — Permissionless Locked Token Marketplace",
+    title: "Axync — Cross-Chain Token Marketplace",
     description:
-      "Trade locked tokens without permission. Sell your vesting positions today, buy them at a discount. Trustless escrow, instant settlement.",
+      "Trade any token across any chain. ERC-20 and vesting NFT marketplace with ZK-powered cross-chain settlement.",
   },
   metadataBase: new URL("https://axync.xyz"),
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -60,7 +68,7 @@ export default function RootLayout({
                 "https://github.com/axync",
               ],
               description:
-                "Permissionless marketplace for trading locked and vesting token positions.",
+                "Cross-chain marketplace for ERC-20 tokens and vesting positions with ZK-powered settlement.",
             }),
           }}
         />

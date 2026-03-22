@@ -4,31 +4,31 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
 
 const platforms = [
   {
+    icon: "\uD83D\uDD37",
+    name: "Ethereum",
+    desc: "Mainnet and Sepolia testnet. ERC-20 tokens, Sablier and Hedgey vesting NFTs.",
+    status: "LIVE",
+    live: true,
+  },
+  {
+    icon: "\uD83D\uDD35",
+    name: "Base",
+    desc: "Low-cost L2 by Coinbase. Cross-chain deposits and settlements via ZK proofs.",
+    status: "LIVE",
+    live: true,
+  },
+  {
     icon: "\uD83D\uDCA7",
-    name: "Sablier",
-    desc: "Largest vesting protocol. $2B+ TVL. ERC-721 stream NFTs \u2014 fully transferable.",
+    name: "Sablier & Hedgey",
+    desc: "Vesting NFT protocols with $2B+ combined TVL. Auto-detected, instantly listable.",
     status: "SUPPORTED",
     live: true,
-  },
-  {
-    icon: "\uD83E\uDD94",
-    name: "Hedgey",
-    desc: "Fast-growing lockup protocol. ERC-721 NFTs with flexible vesting schedules.",
-    status: "SUPPORTED",
-    live: true,
-  },
-  {
-    icon: "\uD83D\uDD12",
-    name: "TeamFinance",
-    desc: "Popular token lock platform. Non-transferable vesting \u2014 requires forwarder contract.",
-    status: "PHASE 2",
-    live: false,
   },
   {
     icon: "\u2699\uFE0F",
-    name: "Custom Contracts",
-    desc: "ARB, OP, STRK, and other project-specific vesting contracts with ZK verification.",
-    status: "PHASE 3",
+    name: "Arbitrum & More",
+    desc: "Expanding to Arbitrum, Optimism, and Solana. Same protocol, more chains.",
+    status: "COMING",
     live: false,
   },
 ];
@@ -41,10 +41,10 @@ export function Supported() {
 
       <FadeIn>
         <span className="text-xs tracking-[0.12em] uppercase text-lavender">
-          06 &mdash; Supported Platforms
+          06 &mdash; Platforms &amp; Chains
         </span>
         <h2 className="mt-4 font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15] text-text-bright">
-          Works with major vesting protocols.
+          Multi-chain from <span className="text-gradient">day one.</span>
         </h2>
       </FadeIn>
 

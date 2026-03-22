@@ -5,24 +5,24 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./Animate";
 const phases = [
   {
     phase: "Phase 1",
-    title: "MVP Launch",
+    title: "Cross-Chain MVP",
     status: "active" as const,
     items: [
-      "Escrow contract for Sablier & Hedgey NFTs",
-      "Vesting position indexer & API",
-      "Marketplace UI: list, browse, buy",
-      "Ethereum mainnet deployment",
+      "ERC-20 & ERC-721 escrow contracts",
+      "ZK sequencer with cross-chain settlement",
+      "Ethereum + Base Sepolia testnet",
+      "Relayer for on-chain proof submission",
     ],
   },
   {
     phase: "Phase 2",
-    title: "Growth",
+    title: "Mainnet & Growth",
     status: "upcoming" as const,
     items: [
-      "Bid system for buyers",
-      "Axync Index: public discount dashboard",
-      "Non-transferable vesting support",
-      "Base & Arbitrum deployment",
+      "Ethereum + Base mainnet deployment",
+      "Marketplace UI: list, browse, buy, claim",
+      "Sablier & Hedgey vesting auto-detection",
+      "Bid system and discount dashboard",
     ],
   },
   {
@@ -30,10 +30,10 @@ const phases = [
     title: "Scale",
     status: "upcoming" as const,
     items: [
-      "ZK privacy for position sizes",
-      "Cross-chain (Solana locked tokens)",
+      "Arbitrum, Optimism, Solana",
+      "Non-transferable vesting via ZK",
       "API for OTC desks",
-      "Custom vesting contract support",
+      "Custom vesting contract adapters",
     ],
   },
 ];

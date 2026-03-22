@@ -51,10 +51,10 @@ export function DealPreview() {
             {[
               { label: "Market Value", value: "$94,000", style: "line-through text-text-dim" },
               { label: "Discount", value: "34% off", style: "text-success" },
+              { label: "Asset Chain", value: "Ethereum", style: "" },
+              { label: "Payment Chain", value: "Base", style: "" },
               { label: "Vesting Platform", value: "Sablier", style: "" },
-              { label: "Time to Full Unlock", value: "8 months", style: "" },
-              { label: "Already Claimed", value: "12,000 ARB (12%)", style: "" },
-              { label: "Settlement", value: "Atomic NFT Swap", style: "text-lavender" },
+              { label: "Settlement", value: "ZK Cross-Chain", style: "text-lavender" },
             ].map((row) => (
               <div key={row.label} className="flex justify-between py-1.5">
                 <span className="text-[13px] text-text-dim">{row.label}</span>

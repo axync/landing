@@ -7,19 +7,19 @@ const problems = [
     icon: "\u2715",
     color: "error" as const,
     title: "Trust-based OTC in Telegram",
-    desc: "Millions in locked tokens traded daily through DMs. No escrow, no verification. Someone always gets scammed.",
+    desc: "Locked tokens and ERC-20s traded daily through DMs. No escrow, no verification. Someone always gets scammed.",
   },
   {
     icon: "\u2715",
     color: "error" as const,
-    title: "Existing platforms require issuer approval",
-    desc: "Current solutions need the project to approve every trade. New airdrops? Wait weeks for integration while the market moves without you.",
+    title: "No cross-chain liquidity",
+    desc: "Your tokens are on Ethereum but the buyer is on Base. Bridges are slow, expensive, and add trust assumptions.",
   },
   {
     icon: "\u2715",
     color: "error" as const,
     title: "Institutional gatekeeping",
-    desc: "Existing solutions target VCs with $100K+ minimums. Regular holders with $5K\u2013$50K positions are locked out.",
+    desc: "Existing platforms require issuer approval and $100K+ minimums. Regular holders are locked out.",
   },
 ];
 
@@ -35,9 +35,9 @@ export function Problem() {
             01 &mdash; The Problem
           </span>
           <h2 className="font-heading text-[clamp(28px,4vw,44px)] font-bold leading-[1.15]">
-            $150B in locked tokens.
+            Locked tokens. Trapped value.
             <br />
-            No way to trade them.
+            No cross-chain market.
           </h2>
         </FadeIn>
 
@@ -67,9 +67,9 @@ export function Problem() {
                   &#x2713;
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-text-bright">Axync: permissionless by design</h3>
+                  <h3 className="text-base font-semibold text-text-bright">Axync: cross-chain by design</h3>
                   <p className="mt-1 text-sm leading-relaxed text-text-dim">
-                    Works with any vesting NFT from day one. No issuer approval, no minimums, no gatekeepers. Airdrop drops &mdash; tradeable immediately.
+                    List ERC-20 tokens or vesting NFTs on any chain. Buyers pay on any chain. ZK sequencer settles atomically. No bridges, no wrapping, no trust.
                   </p>
                 </div>
               </div>
