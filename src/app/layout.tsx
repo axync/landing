@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     title: "Axync — Cross-Chain Token Marketplace",
     description:
       "Trade any token across any chain. tokens and vesting marketplace with ZK-powered cross-chain settlement.",
+    site: "@axync_xyz",
+    creator: "@axync_xyz",
+  },
+  alternates: {
+    canonical: "https://axync.xyz",
   },
   metadataBase: new URL("https://axync.xyz"),
   icons: {
@@ -54,6 +59,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -69,6 +80,17 @@ export default function RootLayout({
               ],
               description:
                 "Cross-chain marketplace for tokens tokens and vesting positions with ZK-powered settlement.",
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Axync",
+              url: "https://axync.xyz",
             }),
           }}
         />
