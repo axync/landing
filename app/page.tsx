@@ -171,8 +171,8 @@ const sunFragmentShader = `
   ${snoiseGLSL}
 
   void main() {
-    float n = snoise(vPosition * 3.5 + uTime * 0.15);
-    n += 0.5 * snoise(vPosition * 7.0 - uTime * 0.2);
+    float n = snoise(vPosition * 3.5 + uTime * 0.05);
+    n += 0.5 * snoise(vPosition * 7.0 - uTime * 0.08);
 
     vec3 colorA = vec3(0.95, 0.4, 0.0); 
     vec3 colorB = vec3(1.0, 0.8, 0.2);  
@@ -246,24 +246,6 @@ function DynamicSun({
           toneMapped={false}
         />
       </mesh>
-
-      <Billboard position={[0, 0, 0]}>
-        <Text
-          position={[0, 0, 3.3]}
-          fontSize={2.5}
-          fontWeight="900"
-          font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZJhjp-Ek-_EeA.woff"
-          anchorX="center"
-          anchorY="middle"
-        >
-          A
-          <meshBasicMaterial
-            color="#ffffff"
-            toneMapped={false}
-            depthTest={false}
-          />
-        </Text>
-      </Billboard>
     </group>
   );
 }
@@ -500,7 +482,8 @@ function OrthoCameraRig({
   planetsData: any;
 }) {
   const scroll = useScroll();
-  const { camera } = useThree();
+  const { camera, size } = useThree();
+  const currentOffset = useRef(0);
 
   const currentLookAt = useMemo(() => new THREE.Vector3(), []);
   const targetPos = useMemo(() => new THREE.Vector3(), []);
@@ -510,6 +493,31 @@ function OrthoCameraRig({
     const safeDelta = Math.min(delta, 0.1);
     const time = globalTime.current;
     const o = scroll.offset;
+
+    // Animate camera offset dynamically based on alternating text block positions
+    // Positive offset shifts rendered image LEFT (moving objects LEFT, accommodating RIGHT text)
+    // Negative offset shifts rendered image RIGHT (moving objects RIGHT, accommodating LEFT text)
+    let targetOffset = 0;
+    if (o < 0.10) {
+      targetOffset = 0; // Page 1 (TRADE ANY TOKEN) - Keep CENTERED
+    } else if (o < 0.30) {
+      targetOffset = size.width * 0.25; // Page 2 (Trapped Value) - Object LEFT
+    } else if (o < 0.50) {
+      targetOffset = size.width * -0.25; // Page 3 (Zero Trust Escrow) - Object RIGHT
+    } else if (o < 0.70) {
+      targetOffset = size.width * 0.25; // Page 4 (Cross-Chain Atomic) - Object LEFT
+    } else if (o < 0.90) {
+      targetOffset = size.width * -0.25; // Page 5 (ZK-Proven Batches) - Object RIGHT
+    } else {
+      targetOffset = 0; // Page 6 (Infrastructure Ready) - Object CENTER
+    }
+
+    currentOffset.current = THREE.MathUtils.lerp(currentOffset.current, targetOffset, safeDelta * 2.5);
+    
+    if (camera.type === 'PerspectiveCamera') {
+      const pc = camera as THREE.PerspectiveCamera;
+      pc.setViewOffset(size.width, size.height, currentOffset.current, 0, size.width, size.height);
+    }
 
     // We expanded the planet distances heavily. Orbit matches geometry.
     const p1 = getPlanetPos(
@@ -596,6 +604,61 @@ function OrthoCameraRig({
   return null;
 }
 
+// --- Ambient Scene Additions ---
+
+function AsteroidBelt({ count = 1800, radius = 55, width = 18 }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const globalTime = useRef(0);
+
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+
+  useEffect(() => {
+    if (!meshRef.current) return;
+    for (let i = 0; i < count; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = u * 2.0 * Math.PI;
+      const offset = (v - 0.5) * (v - 0.5) * Math.sign(v - 0.5) * width * 2;
+      const driftY = (Math.random() - 0.5) * 3;
+
+      dummy.position.set(
+        (radius + offset) * Math.cos(theta),
+        driftY,
+        (radius + offset) * Math.sin(theta),
+      );
+      dummy.rotation.set(
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+      );
+      const scale = Math.random() * Math.random() * 0.4 + 0.05;
+      dummy.scale.setScalar(scale);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [count, radius, width, dummy]);
+
+  useFrame((state, delta) => {
+    globalTime.current += delta * 0.015;
+    if (meshRef.current) {
+      meshRef.current.rotation.y = globalTime.current;
+    }
+  });
+
+  return (
+    <instancedMesh
+      ref={meshRef}
+      args={[null as any, null as any, count]}
+      castShadow
+      receiveShadow
+    >
+      <dodecahedronGeometry args={[0.5, 0]} />
+      <meshStandardMaterial color="#111111" roughness={0.9} metalness={0.2} />
+    </instancedMesh>
+  );
+}
+
 // --- Space System Assembly ---
 
 function InteractiveSystem() {
@@ -657,6 +720,9 @@ function InteractiveSystem() {
         shadow-bias={-0.001}
       />
 
+      <AsteroidBelt radius={35} width={12} count={2500} />
+      <AsteroidBelt radius={55} width={25} count={4000} />
+
       <DynamicSun globalTime={globalTime} />
 
       <DataRing radius={planetsData[0].r} opacity={0.06} />
@@ -690,7 +756,7 @@ function InteractiveSystem() {
         />
         <Bloom luminanceThreshold={0.5} mipmapBlur intensity={4.5} levels={9} />
         <Vignette eskil={false} offset={0.3} darkness={1.3} />
-        <Noise opacity={0.03} blendFunction={BlendFunction.SCREEN} />
+        <Noise opacity={0.01} blendFunction={BlendFunction.SCREEN} />
       </EffectComposer>
     </>
   );
@@ -736,11 +802,78 @@ export default function Home() {
             </span>
           </button>
 
-          <button className="pointer-events-auto px-6 py-2 border border-white/20 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all bg-black/50 backdrop-blur-sm">
+          <a
+            href="https://axync.gitbook.io/axync-docs/"
+            target="_blank"
+            className="hidden md:block pointer-events-auto text-[10px] font-mono tracking-widest text-white/50 hover:text-[#00eeff] transition-colors uppercase"
+          >
+            Docs
+          </a>
+
+          <a
+            href="https://github.com/axync"
+            target="_blank"
+            className="hidden md:block pointer-events-auto text-[10px] font-mono tracking-widest text-white/50 hover:text-[#e100ff] transition-colors uppercase"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://app.axync.xyz"
+            target="_blank"
+            className="pointer-events-auto px-6 py-2 border border-white/20 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all bg-black/50 backdrop-blur-sm"
+          >
             LAUNCH APP
-          </button>
+          </a>
         </div>
       </header>
+
+      {/* Persistent Footer */}
+      <footer className="absolute bottom-0 left-0 w-full p-6 z-50 flex justify-between items-end pointer-events-none mix-blend-difference">
+        <div className="flex flex-col gap-2 pointer-events-auto relative">
+          <div className="absolute -left-2 -top-2 w-1 h-1 bg-white/20"></div>
+          <span className="text-[10px] font-mono tracking-widest text-white/30 uppercase">
+            Network Outposts
+          </span>
+          <div className="flex gap-6 mt-1">
+            <a
+              href="https://x.com/axync_xyz"
+              target="_blank"
+              className="text-white hover:text-[#ff3300] transition-colors text-[10px] uppercase font-mono tracking-widest"
+            >
+              X / Twitter
+            </a>
+            <a
+              href="https://github.com/axync"
+              target="_blank"
+              className="text-white hover:text-[#00eeff] transition-colors text-[10px] uppercase font-mono tracking-widest"
+            >
+              GitHub
+            </a>
+            <a
+              href="mailto:info@axync.xyz"
+              className="text-white hover:text-[#e100ff] transition-colors text-[10px] uppercase font-mono tracking-widest"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+        <div className="text-right flex flex-col items-end gap-2 pointer-events-auto">
+          <span className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-white/60">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00eeff] shadow-[0_0_8px_#00eeff] animate-pulse"></span>
+            SYSTEM NOMINAL
+          </span>
+          <span className="text-[9px] font-mono tracking-widest text-white/20">
+            © 2026 AXYNC PROTOCOL
+          </span>
+        </div>
+      </footer>
+
+      {/* Cyber/Tech HUD Corner Accents */}
+      <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-white/20 z-40 pointer-events-none opacity-50"></div>
+      <div className="absolute top-4 right-4 w-12 h-12 border-t border-r border-white/20 z-40 pointer-events-none opacity-50"></div>
+      <div className="absolute bottom-4 left-4 w-12 h-12 border-b border-l border-white/20 z-40 pointer-events-none opacity-50"></div>
+      <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-white/20 z-40 pointer-events-none opacity-50"></div>
 
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]">
         <div className="absolute top-0 left-[10%] w-[1px] h-full bg-white"></div>
@@ -770,113 +903,117 @@ export default function Home() {
             <InteractiveSystem />
 
             <Scroll html style={{ width: "100%", height: "100%" }}>
-              <div className="h-screen flex flex-col justify-center items-start px-[10%] pointer-events-none">
-                <div className="border-l border-white/20 pl-8 overflow-hidden">
-                  <p className="text-[10px] font-mono tracking-[0.3em] text-white/50 mb-4 uppercase">
+              <div className="h-screen flex flex-col justify-center items-start px-8 md:px-[10%] pointer-events-none text-left">
+                <div className="w-full max-w-2xl px-4 py-8 ml-0 mr-auto border-l border-white/20">
+                  <p className="text-[10px] font-mono tracking-[0.4em] text-white/50 mb-6 uppercase">
                     [ Cross-Chain Marketplace ]
                   </p>
                   <h2 className="text-white text-6xl md:text-8xl font-light mb-2 tracking-tighter leading-none">
                     TRADE ANY
                   </h2>
-                  <h2 className="text-white/40 text-5xl md:text-7xl font-light mb-8 tracking-widest leading-none">
+                  <h2 className="text-white/40 text-5xl md:text-7xl font-light mb-12 tracking-widest leading-none">
                     TOKEN
                   </h2>
-                  <div className="flex items-center gap-4 border border-white/10 p-4 bg-black/20 backdrop-blur-sm w-max">
+                  <div className="flex items-center gap-4">
                     <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                    <span className="text-[10px] font-mono tracking-widest opacity-60">
-                      LIVE ON ETH & BASE
+                    <span className="text-[10px] font-mono tracking-[0.3em] opacity-80 uppercase text-white/80">
+                      Live on Ethereum & Base
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="h-screen flex flex-col justify-center items-end px-[10%] pointer-events-none text-right">
-                <div className="max-w-md border-r border-white/20 pr-8">
-                  <h3 className="text-white/30 text-[10px] font-mono tracking-[0.3em] mb-4 uppercase">
+              <div className="h-screen flex flex-col justify-center items-start px-8 md:px-[10%] pointer-events-none text-right">
+                <div className="w-full max-w-2xl px-4 py-8 mr-0 ml-auto border-r border-[#ff3300]/30 flex flex-col items-end">
+                  <h3 className="text-[#ff3300]/70 text-[10px] font-mono tracking-[0.4em] mb-6 uppercase">
                     [ Critical_Failure ]
                   </h3>
-                  <h2 className="text-white text-4xl uppercase tracking-[0.1em] mb-4">
+                  <h2 className="text-white text-4xl md:text-6xl uppercase tracking-[0.1em] mb-8 font-light">
                     Trapped Value
                   </h2>
-                  <p className="text-white/50 text-xs font-mono leading-relaxed mb-8">
-                    Locked tokens traded daily through DMs. No cross-chain
-                    liquidity. Bridges are slow and expensive. Someone always
-                    gets scammed.
+                  <p className="text-white/70 text-xs md:text-sm font-mono leading-relaxed mb-12 max-w-xl self-end">
+                    Locked tokens traded daily through DMs. No cross-chain liquidity. Bridges are slow and expensive. Someone always gets scammed. We built the zero-trust solution out of necessity.
                   </p>
-                  <button className="pointer-events-auto px-10 py-3 border border-white/20 text-[10px] uppercase font-mono tracking-[0.2em] hover:bg-white hover:text-black transition-all bg-black/40 backdrop-blur-md">
+                  <button className="pointer-events-auto px-10 py-4 border border-[#ff3300]/50 text-[10px] uppercase font-mono tracking-[0.3em] text-[#ff3300] hover:bg-[#ff3300] hover:text-black transition-all bg-transparent self-end">
                     View Problem
                   </button>
                 </div>
               </div>
 
-              <div className="h-screen flex flex-col justify-center items-start px-[10%] pointer-events-none">
-                <div className="max-w-md border-l border-white/20 pl-8">
-                  <h3 className="text-[#ff3300] text-[10px] font-mono tracking-[0.3em] mb-4 uppercase">
+              <div className="h-screen flex flex-col justify-center items-start px-8 md:px-[10%] pointer-events-none text-left">
+                <div className="w-full max-w-2xl px-4 py-8 ml-0 mr-auto border-l border-[#00eeff]/20">
+                  <h3 className="text-[#00eeff] text-[10px] font-mono tracking-[0.4em] mb-6 uppercase">
                     [ Protocol_Active ]
                   </h3>
-                  <h2 className="text-white text-3xl uppercase tracking-widest mb-4">
+                  <h2 className="text-white text-4xl md:text-5xl uppercase tracking-[0.1em] mb-8 font-light">
                     Zero Trust Escrow
                   </h2>
-                  <p className="text-white/50 text-xs font-mono leading-relaxed mb-8">
-                    List tokens or vesting positions on any chain. Buyers pay on
-                    any chain. ZK sequencer settles atomically. No bridges, no
-                    wrapping.
+                  <p className="text-white/70 text-xs md:text-sm font-mono leading-relaxed mb-12 max-w-xl">
+                    List tokens or vesting positions on any chain. Buyers pay on any preferred tier. ZK sequencer settles atomically. No bridges, no wrapping, pure mathematical finality.
                   </p>
-                  <button className="pointer-events-auto px-8 py-3 border border-white/20 text-[10px] font-mono tracking-widest hover:bg-[#ff3300] hover:border-[#ff3300] transition-colors bg-white/5 backdrop-blur-md">
+                  <button className="pointer-events-auto px-10 py-4 border border-[#00eeff]/50 text-[10px] uppercase font-mono tracking-[0.3em] text-[#00eeff] hover:bg-[#00eeff] hover:text-black transition-all bg-transparent self-start">
                     List Tokens
                   </button>
                 </div>
               </div>
 
-              <div className="h-screen flex flex-col justify-end pb-[15%] items-center text-center pointer-events-none">
-                <div className="max-w-lg border-b border-[#00eeff]/20 pb-8 px-12">
-                  <h3 className="text-[#00eeff] text-[10px] font-mono tracking-[0.3em] mb-4 uppercase">
+              <div className="h-screen flex flex-col justify-center items-start px-8 md:px-[10%] pointer-events-none text-right">
+                <div className="w-full max-w-2xl px-4 py-8 mr-0 ml-auto border-r border-[#e100ff]/30 flex flex-col items-end">
+                  <h3 className="text-[#e100ff] text-[10px] font-mono tracking-[0.4em] mb-6 uppercase">
                     [ Settlement_Engine ]
                   </h3>
-                  <h2 className="text-white text-3xl uppercase tracking-widest mb-4">
+                  <h2 className="text-white text-4xl md:text-5xl uppercase tracking-[0.1em] mb-8 font-light">
                     Cross-Chain Atomic
                   </h2>
-                  <p className="text-white/50 text-xs font-mono leading-relaxed mb-8 mx-auto">
-                    Buyers browse listings. See the discrete token, discount,
-                    and vesting schedule. Deposit payment on preferred chain
-                    instantaneously.
+                  <p className="text-white/70 text-xs md:text-sm font-mono leading-relaxed mb-12 max-w-xl self-end">
+                    Buyers browse listings globally. See the discrete token, discount, and vesting schedule. Deposit payment instantaneously. The network coordinates the final settlement silently.
                   </p>
-                  <button className="pointer-events-auto px-8 py-3 bg-[#00eeff]/10 border border-[#00eeff]/30 text-[#00eeff] text-[10px] font-mono tracking-widest hover:bg-[#00eeff] hover:text-black transition-all backdrop-blur-md">
+                  <button className="pointer-events-auto px-10 py-4 border border-[#e100ff]/50 text-[10px] uppercase font-mono tracking-[0.3em] text-[#e100ff] hover:bg-[#e100ff] hover:text-black transition-all bg-transparent self-end">
                     Explore Market
                   </button>
                 </div>
               </div>
 
-              <div className="h-screen flex flex-col justify-center items-start px-[10%] pointer-events-none">
-                <div className="max-w-md border-l border-[#e100ff]/20 pl-8">
-                  <h3 className="text-[#e100ff] text-[10px] font-mono tracking-[0.3em] mb-4 uppercase">
+              <div className="h-screen flex flex-col justify-center items-start px-8 md:px-[10%] pointer-events-none text-left">
+                <div className="w-full max-w-2xl px-4 py-8 ml-0 mr-auto border-l border-white/20">
+                  <h3 className="text-white/50 text-[10px] font-mono tracking-[0.4em] mb-6 uppercase">
                     [ Verification_Layer ]
                   </h3>
-                  <h2 className="text-white text-3xl uppercase tracking-widest mb-4">
+                  <h2 className="text-white text-4xl md:text-5xl uppercase tracking-[0.1em] mb-8 font-light">
                     ZK-Proven Batches
                   </h2>
-                  <p className="text-white/50 text-xs font-mono leading-relaxed mb-8">
-                    Sequencer batches trades, generates a ZK proof, and submits
-                    on-chain. Claim target tokens with a pure merkle proof.
+                  <p className="text-white/70 text-xs md:text-sm font-mono leading-relaxed mb-12 max-w-xl">
+                    Sequencer batches trades, generates a Zero-Knowledge proof, and submits on-chain. Claim target tokens with a pure merkle proof. Math, not middlemen.
                   </p>
-                  <button className="pointer-events-auto px-8 py-3 border border-[#e100ff]/30 text-[10px] font-mono tracking-widest text-white hover:bg-[#e100ff] hover:border-[#e100ff] transition-all bg-black/60 backdrop-blur-md">
+                  <button className="pointer-events-auto px-10 py-4 border border-white/50 text-[10px] uppercase font-mono tracking-[0.3em] text-white hover:bg-white hover:text-black transition-all bg-transparent self-start">
                     Read Specs
                   </button>
                 </div>
               </div>
 
-              <div className="h-screen flex flex-col justify-center items-center text-center pointer-events-none">
-                <div className="border border-white/10 p-16 bg-black/40 backdrop-blur-md flex flex-col items-center">
-                  <h2 className="text-white text-lg font-mono tracking-[0.5em] uppercase mb-8">
-                    Cross-Chain Infrastructure
+              <div className="h-screen flex flex-col justify-center items-center px-8 text-center pointer-events-none">
+                <div className="w-full max-w-3xl px-8 py-16 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex flex-col items-center">
+                  <h3 className="text-white/50 text-[10px] font-mono tracking-[0.4em] mb-8 uppercase">
+                    [ Launch_Sequence ]
+                  </h3>
+                  <h2 className="text-white text-3xl md:text-5xl font-light tracking-[0.2em] uppercase mb-16 max-w-lg mx-auto">
+                    Infrastructure Ready
                   </h2>
-                  <div className="flex gap-6 pointer-events-auto">
-                    <button className="px-12 py-4 bg-white text-black text-xs font-mono font-bold tracking-[0.3em] uppercase hover:scale-95 transition-transform">
+                  <div className="flex flex-col sm:flex-row justify-center gap-6 pointer-events-auto">
+                    <a
+                      href="https://app.axync.xyz"
+                      target="_blank"
+                      className="px-12 py-5 bg-white text-black text-[10px] font-mono font-bold tracking-[0.4em] uppercase hover:scale-95 transition-transform text-center"
+                    >
                       Launch dApp
-                    </button>
-                    <button className="px-12 py-4 border border-white/30 text-white text-xs font-mono tracking-[0.3em] uppercase hover:bg-white/10 transition-colors">
+                    </a>
+                    <a
+                      href="https://github.com/axync"
+                      target="_blank"
+                      className="px-12 py-5 border border-white/30 text-white text-[10px] font-mono tracking-[0.4em] uppercase hover:bg-white/10 transition-colors text-center"
+                    >
                       View Source
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
