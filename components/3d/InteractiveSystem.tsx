@@ -119,7 +119,9 @@ export function InteractiveSystem() {
             offset={new THREE.Vector2(0.002, 0.002)}
             blendFunction={BlendFunction.NORMAL}
           />
-        ) : <></>}
+        ) : (
+          <></>
+        )}
         <Bloom
           luminanceThreshold={0.5}
           mipmapBlur
@@ -129,7 +131,9 @@ export function InteractiveSystem() {
         <Vignette eskil={false} offset={0.3} darkness={1.3} />
         {!isMobile ? (
           <Noise opacity={0.01} blendFunction={BlendFunction.SCREEN} />
-        ) : <></>}
+        ) : (
+          <></>
+        )}
       </EffectComposer>
     </>
   );

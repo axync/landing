@@ -13,13 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://axync.xyz"),
   title: "Axync | Institutional Cross-Chain P2P Protocol",
-  description: "The zero-trust P2P marketplace for instant token swaps across any chain. No bridges, no wrapping, high finality. Axync decouples assets from native chains for seamless liquidity.",
-  keywords: ["Web3", "Cross-Chain", "P2P Marketplace", "DeFi", "DeFi Protocol", "Atomic Swaps", "Zero-Trust", "Blockchain Infrastructure"],
+  description:
+    "The zero-trust P2P marketplace for instant token swaps across any chain. No bridges, no wrapping, high finality. Axync decouples assets from native chains for seamless liquidity.",
+  keywords: [
+    "Web3",
+    "Cross-Chain",
+    "P2P Marketplace",
+    "DeFi",
+    "DeFi Protocol",
+    "Atomic Swaps",
+    "Zero-Trust",
+    "Blockchain Infrastructure",
+  ],
   authors: [{ name: "Axync Protocol Team" }],
   openGraph: {
     title: "Axync | Institutional Cross-Chain P2P Protocol",
-    description: "Instant cross-chain liquidity without bridges. Trade any token on any chain securely.",
+    description:
+      "Instant cross-chain liquidity without bridges. Trade any token on any chain securely.",
     url: "https://axync.xyz",
     siteName: "Axync Protocol",
     images: [
@@ -36,7 +48,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Axync | Institutional Cross-Chain P2P Protocol",
-    description: "The next evolution of cross-chain liquidity. Trade tokens across any chain with zero trust.",
+    description:
+      "The next evolution of cross-chain liquidity. Trade tokens across any chain with zero trust.",
     creator: "@axync_xyz",
     images: ["/og-image.png"],
   },
@@ -51,8 +64,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
-
 
 export default function RootLayout({
   children,

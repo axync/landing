@@ -152,7 +152,11 @@ export function ObsidianPlanet({
           geometry={sharedGeometries.moon}
           scale={size * 0.18}
         >
-          <meshStandardMaterial color="#050505" roughness={0.7} metalness={0.5} />
+          <meshStandardMaterial
+            color="#050505"
+            roughness={0.7}
+            metalness={0.5}
+          />
         </mesh>
       ) : null}
     </group>

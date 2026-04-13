@@ -17,26 +17,6 @@ export function Header() {
         </div>
       </div>
       <div className="flex items-center gap-6">
-        <button
-          onClick={toggleSound}
-          className="pointer-events-auto flex items-center gap-2 group"
-        >
-          <div className="flex gap-0.5 items-end h-3">
-            <span
-              className={`w-[2px] bg-white transition-all duration-300 ${isPlaying ? "h-full animate-pulse" : "h-[2px]"}`}
-            ></span>
-            <span
-              className={`w-[2px] bg-white transition-all duration-300 delay-75 ${isPlaying ? "h-2/3 animate-pulse" : "h-[2px]"}`}
-            ></span>
-            <span
-              className={`w-[2px] bg-white transition-all duration-300 delay-150 ${isPlaying ? "h-full animate-pulse" : "h-[2px]"}`}
-            ></span>
-          </div>
-          <span className="text-[9px] font-mono tracking-widest text-white/40 group-hover:text-white transition-colors">
-            {isPlaying ? "AUDIO_ON" : "AUDIO_OFF"}
-          </span>
-        </button>
-
         <a
           href="https://axync.gitbook.io/axync-docs/"
           target="_blank"
